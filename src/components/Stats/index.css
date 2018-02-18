@@ -92,6 +92,7 @@
   .Stats {
     order: 0;
     flex-direction: column;
+    margin-top: 7px;
   }
 
   .Stats__players {
