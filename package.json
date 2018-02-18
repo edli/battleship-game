@@ -2,6 +2,7 @@
   "name": "battleship-game",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://edli.github.io/battleship-game",
   "dependencies": {
     "antd": "^3.2.1",
     "bem-cn": "^2.1.3",
