@@ -1,0 +1,16 @@
+.App {
+  height: 100vh;
+}
+
+.App__header {
+  font-size: 22px;
+  color: #fff;
+  background-color: #344554;
+}
+
+.App__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #344554;
+}
