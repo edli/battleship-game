@@ -1,13 +1,14 @@
-import { createAction, combineActions, handleActions } from 'redux-actions'
+import { createAction, handleActions } from 'redux-actions'
 import { combineReducers } from 'redux';
 
-export const startNewGame = createAction('GAME_START')
 export const restartGame = createAction('GAME_RESTART')
 export const fire = createAction('GAME_FIRE')
 
 const FIELD_SIZE = 10
 
 const SHIPS_DATA = {
+  // shipTypes not really needed for this game
+  // layout is enough
   shipTypes: {
     carrier: { size: 5, count: 1 },
     battleship: { size: 4, count: 1 },
@@ -27,10 +28,11 @@ const SHIPS_DATA = {
 const getIdx = ([ x, y ]) => y * FIELD_SIZE + x
 
 const gameData = handleActions({
-  [combineActions(startNewGame, restartGame)](state) {
+  [restartGame](state) {
     return {
       ...state,
       field: new Array(FIELD_SIZE * FIELD_SIZE).fill(false),
+      score: state.score + 1,
     }
   },
   [fire](state, { payload: idx }) {
@@ -52,27 +54,25 @@ const gameData = handleActions({
       [getIdx(position)]: ship,
     }), {})
   }), {}),
+  field: new Array(FIELD_SIZE * FIELD_SIZE).fill(false),
+  score: 0,
 })
 
-const gameState = handleActions({
-  [startNewGame](state) {
-    return {
-      ...state,
-      isRunning: true
-    }
-  },
-}, {
-  isRunning: false
-})
-
-export const isRunning = ({ state }) => state.isRunning
 export const getField = ({ data }) => data.field
+export const getScore = ({ data }) => data.score
 export const getShipsPositions = ({ data }) => data.shipsPositions
+export const getShipsStats = ({ data }) => data.ships.map(({ id, ship, positions }) => {
+  return {
+    id,
+    ship,
+    lives: positions.length,
+    hits: positions.reduce((result, position) => data.field[getIdx(position)] ? result + 1 : result, 0)
+  }
+})
 const isShipDestoyed = ({ field }, { positions }) => positions.every(position => field[getIdx(position)])
 export const isAllShipsDestroyed = ({ data }) => data.ships.every(ship => isShipDestoyed(data, ship))
 export const getDestroyedShips = ({ data }) => data.ships.filter(ship => isShipDestoyed(data, ship))
 
 export default combineReducers({
   data: gameData,
-  state: gameState,
 })

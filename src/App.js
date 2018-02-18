@@ -1,30 +1,28 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Layout } from 'antd'
 
-import { isRunning } from './store/game'
+import { isAllShipsDestroyed } from './store/game'
 
-import Game from './containers/game'
-import Menu from './containers/menu'
+import Field from './containers/field'
+import Stats from './containers/stats'
+import Success from './containers/success'
 
 import './App.css'
 
 const cn = require('bem-cn')('App')
 
-const App = ({ isRunning }) => {
+const App = ({ isAllShipsDestroyed }) => {
   return (
-    <Layout className={cn()}>
-      <Layout.Header className={cn('header')()}>Battleship game</Layout.Header>
-      <Layout.Content className={cn('content')()}>
-        {isRunning ? <Game /> : <Menu />}
-      </Layout.Content>
-    </Layout>
+    <div className={cn()}>
+      <Field />
+      <Stats />
+      {isAllShipsDestroyed && <Success />}
+    </div>
   )
 }
 
-
 const mapStateToProps = state => ({
-  isRunning: isRunning(state),
+  isAllShipsDestroyed: isAllShipsDestroyed(state),
 })
 
 export default connect(mapStateToProps)(App)

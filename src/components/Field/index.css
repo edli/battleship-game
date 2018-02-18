@@ -1,0 +1,15 @@
+.Field {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+
+  border: 7px solid #FDB02A;
+}
+
+@media all and (min-width: 1244px) {
+  .Field {
+    flex: 0 0 736px;
+    order: 1;
+  }
+}

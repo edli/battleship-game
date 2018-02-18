@@ -1,0 +1,23 @@
+.Cell {
+  width: 10%;
+  font-size: 20px;
+  box-shadow: inset 0px 0px 1px 0px #989898;
+  background-color: #f8f8f8;
+  background-size: cover;
+}
+
+.Cell:before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+
+.Cell_type_miss {
+  background-image: url(./images/Miss.png);
+  box-shadow: none;
+}
+
+.Cell_type_hit {
+  background-image: url(./images/Hit.png);
+  box-shadow: none;
+}

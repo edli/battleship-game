@@ -1,0 +1,122 @@
+.Stats {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.Stats__players {
+  display: flex;
+  flex-direction: row;
+}
+
+.Stats__player {
+  flex: 1 1 50%;
+  padding-top: 10px;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #2db8a0;
+}
+
+.Stats__player:first-child {
+  background-color: #fdb02a
+}
+
+.Stats__player-score {
+  font-size: 32px;
+  line-height: 32px;
+  color: #494949;
+  font-weight: bold;
+}
+
+.Stats__player-delimiter {
+  background-color: rgba(73, 73, 73, 0.5);
+  border: none;
+  width: 65%;
+  height: 1px;
+}
+
+.Stats__player-name {
+  font-size: 16px;
+  line-height: 16px;
+  color: #494949;
+  font-weight: bold;
+}
+
+.Stats__ships {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 132px;
+  padding-top: 10px;
+}
+
+@media all and (min-width: 768px) {
+  .Stats {
+    flex-direction: row;
+    margin-top: 30px;
+  }
+
+  .Stats__players {
+    margin-right: 15px;
+    flex: 0 0 240px;
+  }
+
+  .Stats__player {
+    height: 120px;
+    padding: 10px;
+    justify-content: space-around;
+  }
+
+  .Stats__player-score {
+    font-size: 34px;
+    line-height: 34px;
+  }
+
+  .Stats__player-delimiter {
+    width: 100%;
+  }
+
+  .Stats__player-name {
+    font-size: 18px;
+    line-height: 18px;
+  }
+
+  .Stats__ships {
+    padding-top: 0px;
+  }
+}
+
+@media all and (min-width: 1244px) {
+  .Stats {
+    order: 0;
+    flex-direction: column;
+  }
+
+  .Stats__players {
+    width: 480px;
+    margin-right: 28px;
+  }
+
+  .Stats__player {
+    height: 240px;
+    padding: 15px;
+  }
+
+  .Stats__player-score {
+    font-size: 72px;
+    line-height: 72px;
+  }
+
+  .Stats__player-name {
+    font-size: 34px;
+    line-height: 34px;
+  }
+
+  .Stats__ships {
+    height: auto;
+    width: 480px;
+    margin-top: 15px;
+  }
+}

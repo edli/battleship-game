@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import Game from '../components/Game'
+import Field from '../components/Field'
 import { getField, getDestroyedShips, getShipsPositions, restartGame, fire, isAllShipsDestroyed } from '../store/game'
 
 const mapStateToProps = state => ({
@@ -15,4 +15,4 @@ const mapDispatchToProps = {
   fire,
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Game)
+export default connect(mapStateToProps, mapDispatchToProps)(Field)

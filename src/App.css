@@ -1,16 +1,19 @@
 .App {
-  height: 100vh;
-}
-
-.App__header {
-  font-size: 22px;
-  color: #fff;
-  background-color: #344554;
-}
-
-.App__content {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #344554;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+@media all and (min-width: 768px) {
+  .App {
+    width: 734px;
+    margin: 0 auto;
+  }
+}
+
+@media all and (min-width: 1244px) {
+  .App {
+    width: 1244px;
+    flex-direction: row;
+  }
 }
